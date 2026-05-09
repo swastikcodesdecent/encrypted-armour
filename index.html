@@ -1183,7 +1183,7 @@ body{
     </div>
     <div class="form-group">
       <label class="form-label">Username</label>
-      <input id="li-username" class="form-input" type="text" placeholder="Username" autocomplete="off" readonly />
+      <input id="li-username" class="form-input" type="text" placeholder="Username" autocomplete="off" />
     </div>
     <div class="form-group">
       <label class="form-label">Password</label>
@@ -1469,10 +1469,8 @@ body{
     projectId: "encrypted-armour",
     storageBucket: "encrypted-armour.firebasestorage.app",
     messagingSenderId: "7016406900",
-    appId: "1:7016406900:web:96860e5f911d8009c69621",
-    databaseURL: "https://encrypted-armour-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    appId: "1:7016406900:web:96860e5f911d8009c69621"
 };
-
 /* ═══════════════════════════════════
    AI API KEY — Optional
 ═══════════════════════════════════ */
@@ -1832,7 +1830,12 @@ signupBtn.addEventListener("click", async () => {
 /* ── LOGIN ── */
 const loginBtn = document.getElementById("login-btn");
 loginBtn.addEventListener("click", async () => {
+  const username = document.getElementById("li-username").value.trim();
   const password = document.getElementById("li-password").value;
+  if (!username) {
+    showAuthError('login', 'Please enter your username.');
+    return;
+  }
   if (password !== EMPLOYEE_PASSWORD) {
     handleWrongAttempt();
     return;
@@ -1847,6 +1850,8 @@ loginBtn.addEventListener("click", async () => {
       return;
     }
     await auth.signInWithEmailAndPassword(email, internalPassword);
+    localStorage.setItem('ea_last_username', username);
+    localStorage.setItem('ea_username', username);
     localStorage.setItem('ea_attempts', '0');
     showNotif("Welcome Back", "success");
   } catch(err) {
