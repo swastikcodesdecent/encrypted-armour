@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — Encrypted Armour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{
+  --navy:#07111F;
+  --black:#05070D;
+  --blue:#3B82F6;
+  --cyan:#22D3EE;
+  --violet:#8B5CF6;
+  --white:#FFFFFF;
+  --gray:#94A3B8;
+  --gray-dim:#475569;
+  --border:rgba(255,255,255,0.07);
+  --border-light:rgba(255,255,255,0.05);
+  --glass:rgba(255,255,255,0.04);
+  --glass-hover:rgba(255,255,255,0.07);
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+::selection{background:var(--blue);color:#fff;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--blue),var(--violet));border-radius:2px;}
+
+/* ── BACKGROUND ── */
+.bg-grid{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,130,246,0.035) 1px,transparent 1px);
+  background-size:60px 60px;
+  z-index:0;pointer-events:none;
+}
+.bg-glow{
+  position:fixed;pointer-events:none;z-index:0;
+  border-radius:50%;filter:blur(120px);
+}
+.bg-glow-1{
+  width:600px;height:600px;
+  background:rgba(59,130,246,0.06);
+  top:-200px;right:-100px;
+  animation:glowDrift 12s ease-in-out infinite;
+}
+.bg-glow-2{
+  width:400px;height:400px;
+  background:rgba(139,92,246,0.05);
+  bottom:20%;left:-100px;
+  animation:glowDrift 15s ease-in-out infinite reverse;
+}
+@keyframes glowDrift{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(40px,-40px);}
+}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.022;z-index:0;pointer-events:none;
+}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 40px);max-width:1100px;
+  background:rgba(7,17,31,0.75);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid var(--border);
+  border-radius:100px;
+  padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:1000;
+  box-shadow:0 4px 40px rgba(0,0,0,0.4),0 0 0 1px rgba(59,130,246,0.08);
+  transition:all 0.3s ease;
+}
+.nav-logo{
+  font-family:var(--font-head);font-size:1.1rem;font-weight:800;
+  background:linear-gradient(135deg,var(--white),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;letter-spacing:-0.02em;
+  text-decoration:none;
+}
+.nav-back{
+  display:flex;align-items:center;gap:8px;
+  color:var(--gray);font-size:0.85rem;font-weight:500;
+  text-decoration:none;padding:8px 16px;border-radius:100px;
+  border:1px solid var(--border);background:var(--glass);
+  transition:all 0.2s ease;
+}
+.nav-back:hover{color:var(--white);background:var(--glass-hover);border-color:rgba(59,130,246,0.25);}
+.nav-back i{font-size:0.75rem;transition:transform 0.2s ease;}
+.nav-back:hover i{transform:translateX(-3px);}
+
+/* ── LAYOUT ── */
+.page-wrap{
+  position:relative;z-index:2;
+  max-width:1100px;margin:0 auto;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:48px;
+  padding-top:120px;
+  padding-bottom:100px;
+}
+
+/* ── SIDEBAR TOC ── */
+.toc-sidebar{
+  position:sticky;top:100px;
+  height:fit-content;
+  align-self:start;
+}
+.toc-card{
+  background:rgba(7,17,31,0.7);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px 20px;
+  backdrop-filter:blur(20px);
+}
+.toc-label{
+  font-size:0.68rem;font-weight:700;
+  color:var(--gray-dim);letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:16px;
+  padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.toc-list a{
+  display:flex;align-items:center;gap:10px;
+  color:var(--gray);font-size:0.8rem;font-weight:500;
+  text-decoration:none;padding:8px 10px;border-radius:10px;
+  transition:all 0.2s ease;line-height:1.3;
+}
+.toc-list a:hover,
+.toc-list a.active{
+  color:var(--white);background:var(--glass-hover);
+}
+.toc-list a.active{
+  color:var(--cyan);
+  border-left:2px solid var(--cyan);
+  padding-left:12px;
+}
+.toc-list .toc-num{
+  font-size:0.65rem;font-weight:700;color:var(--gray-dim);
+  min-width:18px;font-family:var(--font-head);
+}
+.toc-list a.active .toc-num{color:var(--cyan);}
+
+.toc-meta{
+  margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
+}
+.toc-meta p{font-size:0.73rem;color:var(--gray-dim);line-height:1.5;}
+.toc-meta strong{color:var(--gray);}
+
+/* ── MAIN CONTENT ── */
+.policy-content{}
+
+/* Hero header */
+.policy-hero{
+  margin-bottom:56px;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--border);
+}
+.policy-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);
+  border-radius:100px;padding:7px 16px;margin-bottom:24px;
+  font-size:0.72rem;font-weight:700;color:var(--blue);
+  letter-spacing:0.08em;text-transform:uppercase;
+}
+.policy-hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2.2rem,4vw,3.2rem);
+  font-weight:800;letter-spacing:-0.04em;line-height:1.05;
+  margin-bottom:16px;
+}
+.policy-hero h1 span{
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.policy-hero .lead{
+  color:var(--gray);font-size:1rem;line-height:1.7;
+  font-weight:300;max-width:600px;margin-bottom:28px;
+}
+.policy-meta-row{
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.meta-chip{
+  display:flex;align-items:center;gap:7px;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:100px;padding:7px 14px;
+  font-size:0.75rem;color:var(--gray);font-weight:500;
+}
+.meta-chip i{color:var(--cyan);font-size:0.7rem;}
+
+/* Sections */
+.policy-section{
+  margin-bottom:56px;
+  opacity:0;transform:translateY(20px);
+  transition:all 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.policy-section.visible{opacity:1;transform:translateY(0);}
+
+.section-anchor{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:20px;
+}
+.section-num{
+  font-family:var(--font-head);font-size:0.72rem;font-weight:800;
+  color:var(--cyan);letter-spacing:0.08em;
+  background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.2);
+  padding:4px 10px;border-radius:6px;flex-shrink:0;
+}
+.policy-section h2{
+  font-family:var(--font-head);
+  font-size:1.35rem;font-weight:700;
+  letter-spacing:-0.02em;line-height:1.2;
+}
+.policy-section p{
+  color:var(--gray);font-size:0.92rem;line-height:1.8;
+  font-weight:300;margin-bottom:16px;
+}
+.policy-section p:last-child{margin-bottom:0;}
+.policy-section p strong{color:var(--white);font-weight:600;}
+
+/* Info box */
+.info-box{
+  background:rgba(59,130,246,0.06);
+  border:1px solid rgba(59,130,246,0.18);
+  border-left:3px solid var(--blue);
+  border-radius:12px;padding:18px 20px;
+  margin:20px 0;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.info-box i{color:var(--blue);font-size:0.9rem;margin-top:2px;flex-shrink:0;}
+.info-box p{margin:0;font-size:0.875rem;}
+
+.highlight-box{
+  background:rgba(34,211,238,0.05);
+  border:1px solid rgba(34,211,238,0.15);
+  border-left:3px solid var(--cyan);
+  border-radius:12px;padding:18px 20px;
+  margin:20px 0;
+}
+.highlight-box p{margin:0;font-size:0.875rem;}
+
+.warn-box{
+  background:rgba(251,191,36,0.05);
+  border:1px solid rgba(251,191,36,0.15);
+  border-left:3px solid #fbbf24;
+  border-radius:12px;padding:18px 20px;
+  margin:20px 0;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.warn-box i{color:#fbbf24;font-size:0.9rem;margin-top:2px;flex-shrink:0;}
+.warn-box p{margin:0;font-size:0.875rem;}
+
+/* Data table */
+.data-table{
+  width:100%;border-collapse:collapse;
+  margin:20px 0;font-size:0.85rem;
+  border-radius:12px;overflow:hidden;
+  border:1px solid var(--border);
+}
+.data-table th{
+  background:rgba(255,255,255,0.05);
+  color:var(--gray);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:12px 16px;text-align:left;
+  border-bottom:1px solid var(--border);
+}
+.data-table td{
+  padding:12px 16px;color:var(--gray);
+  border-bottom:1px solid var(--border-light);
+  vertical-align:top;line-height:1.5;
+}
+.data-table td:first-child{color:var(--white);font-weight:500;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:rgba(255,255,255,0.02);}
+
+/* Rights grid */
+.rights-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;margin:20px 0;
+}
+.right-card{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:14px;padding:18px 16px;
+  display:flex;gap:12px;align-items:flex-start;
+  transition:all 0.25s ease;
+}
+.right-card:hover{background:var(--glass-hover);border-color:rgba(59,130,246,0.2);transform:translateY(-2px);}
+.right-icon{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.8rem;flex-shrink:0;
+}
+.right-icon.blue{background:rgba(59,130,246,0.15);color:var(--blue);}
+.right-icon.cyan{background:rgba(34,211,238,0.15);color:var(--cyan);}
+.right-icon.violet{background:rgba(139,92,246,0.15);color:var(--violet);}
+.right-card h4{font-size:0.85rem;font-weight:700;margin-bottom:4px;}
+.right-card p{font-size:0.78rem;color:var(--gray);line-height:1.5;margin:0;}
+
+/* Commitment list */
+.commit-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.commit-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  color:var(--gray);font-size:0.9rem;line-height:1.6;font-weight:300;
+}
+.commit-list li::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--cyan);flex-shrink:0;margin-top:7px;
+}
+
+/* Contact card */
+.contact-card{
+  background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.06));
+  border:1px solid rgba(59,130,246,0.2);
+  border-radius:18px;padding:28px;margin-top:20px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.contact-card h3{
+  font-family:var(--font-head);font-size:1.1rem;font-weight:700;
+  margin-bottom:6px;
+}
+.contact-card p{font-size:0.875rem;color:var(--gray);margin:0;}
+.contact-card a{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;text-decoration:none;
+  padding:11px 22px;border-radius:100px;
+  font-size:0.85rem;font-weight:600;
+  transition:all 0.3s ease;
+  box-shadow:0 0 20px rgba(59,130,246,0.25);white-space:nowrap;
+}
+.contact-card a:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(59,130,246,0.45);}
+
+/* Divider between sections */
+.section-divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin-bottom:56px;
+}
+
+/* Back to top */
+.back-top{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--gray-dim);font-size:0.8rem;font-weight:500;
+  text-decoration:none;cursor:pointer;background:none;border:none;
+  transition:color 0.2s ease;
+}
+.back-top:hover{color:var(--cyan);}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid var(--border);
+  padding:40px 24px;margin-top:0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-logo{
+  font-family:var(--font-head);font-size:1rem;font-weight:800;
+  background:linear-gradient(135deg,var(--white),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.footer-copy{color:var(--gray-dim);font-size:0.78rem;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{
+  color:var(--gray-dim);font-size:0.78rem;text-decoration:none;
+  transition:color 0.2s ease;
+}
+.footer-links a:hover{color:var(--white);}
+.footer-links a.current{color:var(--cyan);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr;padding-top:100px;}
+  .toc-sidebar{position:static;height:auto;}
+  .toc-card{display:none;}
+  .rights-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  nav{width:calc(100% - 24px);top:12px;padding:12px 18px;}
+  .page-wrap{padding:90px 16px 80px;}
+  .policy-hero h1{font-size:1.9rem;}
+  .contact-card{flex-direction:column;}
+  .policy-meta-row{gap:10px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Encrypted Armour</a>
+  <a href="index.html" class="nav-back">
+    <i class="fa-solid fa-arrow-left"></i> Back to Home
+  </a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#s1" class="active"><span class="toc-num">01</span>Overview</a></li>
+        <li><a href="#s2"><span class="toc-num">02</span>Information We Collect</a></li>
+        <li><a href="#s3"><span class="toc-num">03</span>How We Use Information</a></li>
+        <li><a href="#s4"><span class="toc-num">04</span>Data Sharing</a></li>
+        <li><a href="#s5"><span class="toc-num">05</span>Data Storage &amp; Security</a></li>
+        <li><a href="#s6"><span class="toc-num">06</span>Encryption Architecture</a></li>
+        <li><a href="#s7"><span class="toc-num">07</span>Your Rights</a></li>
+        <li><a href="#s8"><span class="toc-num">08</span>Cookies &amp; Tracking</a></li>
+        <li><a href="#s9"><span class="toc-num">09</span>Data Retention</a></li>
+        <li><a href="#s10"><span class="toc-num">10</span>Children's Privacy</a></li>
+        <li><a href="#s11"><span class="toc-num">11</span>Policy Changes</a></li>
+        <li><a href="#s12"><span class="toc-num">12</span>Contact Us</a></li>
+      </ul>
+      <div class="toc-meta">
+        <p><strong>Effective:</strong> January 1, 2025</p>
+        <p style="margin-top:6px"><strong>Last updated:</strong> May 10, 2025</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="policy-content">
+
+    <!-- Hero -->
+    <div class="policy-hero">
+      <div class="policy-badge"><i class="fa-solid fa-shield-halved"></i> Legal & Privacy</div>
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="lead">At Encrypted Armour, privacy is not a feature — it is the foundation. This policy explains exactly what data we collect, how we use it, and the architectural guarantees that protect your organization's information.</p>
+      <div class="policy-meta-row">
+        <div class="meta-chip"><i class="fa-solid fa-calendar"></i> Effective: January 1, 2025</div>
+        <div class="meta-chip"><i class="fa-solid fa-pen-to-square"></i> Updated: May 10, 2025</div>
+        <div class="meta-chip"><i class="fa-solid fa-globe"></i> Applies globally</div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="policy-section" id="s1">
+      <div class="section-anchor">
+        <span class="section-num">01</span>
+        <h2>Overview</h2>
+      </div>
+      <p>Encrypted Armour ("we," "our," or "us") operates a highly secure enterprise workspace platform designed for organizations that require confidential internal collaboration. This Privacy Policy governs the collection, use, processing, and protection of personal data when you access or use our platform, website, APIs, and associated services (collectively, the "Services").</p>
+      <p>This policy applies to all users of the Encrypted Armour platform including administrators, employees of client organizations, and visitors to our website. By using the Services, you acknowledge that you have read and understood this policy.</p>
+      <div class="highlight-box">
+        <p><strong style="color:var(--cyan)">Our core commitment:</strong> Encrypted Armour operates on a zero-knowledge architecture. We cannot read the content of your encrypted messages, files, or communications. Your organization controls the encryption keys, not us.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 02 -->
+    <div class="policy-section" id="s2">
+      <div class="section-anchor">
+        <span class="section-num">02</span>
+        <h2>Information We Collect</h2>
+      </div>
+      <p>We collect the minimum information necessary to provide, maintain, and improve the Services. We categorize this data as follows:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account Information</td>
+            <td>Name, work email, organization name, role</td>
+            <td>Authentication and account management</td>
+          </tr>
+          <tr>
+            <td>Usage Metadata</td>
+            <td>Login timestamps, session duration, feature interactions</td>
+            <td>Security monitoring and product improvement</td>
+          </tr>
+          <tr>
+            <td>Device & Technical Data</td>
+            <td>IP address, browser type, OS version, device identifiers</td>
+            <td>Fraud prevention and security enforcement</td>
+          </tr>
+          <tr>
+            <td>Billing Information</td>
+            <td>Payment method type, billing address, invoice history</td>
+            <td>Processing subscriptions (via PCI-DSS compliant processors)</td>
+          </tr>
+          <tr>
+            <td>Support Communications</td>
+            <td>Support tickets, chat logs with our team</td>
+            <td>Customer support and issue resolution</td>
+          </tr>
+          <tr>
+            <td>Workspace Content</td>
+            <td>Messages, files, tasks (encrypted, inaccessible to us)</td>
+            <td>Delivered to users — we cannot access the plaintext</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <i class="fa-solid fa-circle-info"></i>
+        <p><strong style="color:var(--white)">What we do NOT collect:</strong> We do not collect the content of end-to-end encrypted messages, file contents, conference call audio/video, or any workspace data in plaintext form. This content is encrypted client-side before transmission.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 03 -->
+    <div class="policy-section" id="s3">
+      <div class="section-anchor">
+        <span class="section-num">03</span>
+        <h2>How We Use Information</h2>
+      </div>
+      <p>We use the information we collect strictly for the following purposes:</p>
+      <ul class="commit-list">
+        <li><strong style="color:var(--white)">Service delivery:</strong> Providing, operating, and maintaining the Encrypted Armour platform and all associated features.</li>
+        <li><strong style="color:var(--white)">Security and fraud prevention:</strong> Detecting unauthorized access, monitoring for anomalous behavior, and enforcing Zero Trust policies across sessions.</li>
+        <li><strong style="color:var(--white)">Authentication:</strong> Verifying user identity through multi-factor authentication, SSO integrations, and session management.</li>
+        <li><strong style="color:var(--white)">Billing and account management:</strong> Processing payments, managing subscriptions, and issuing invoices to enterprise clients.</li>
+        <li><strong style="color:var(--white)">Product improvement:</strong> Analyzing aggregated, anonymized usage patterns to improve performance, reliability, and the user experience.</li>
+        <li><strong style="color:var(--white)">Legal compliance:</strong> Meeting obligations under applicable data protection laws including GDPR, CCPA, and regional equivalents.</li>
+        <li><strong style="color:var(--white)">Customer support:</strong> Responding to support requests, resolving technical issues, and communicating service updates.</li>
+      </ul>
+      <p>We do not use your data for advertising, do not sell it to third parties, and do not use it to train AI or machine learning models without explicit consent.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 04 -->
+    <div class="policy-section" id="s4">
+      <div class="section-anchor">
+        <span class="section-num">04</span>
+        <h2>Data Sharing</h2>
+      </div>
+      <p>Encrypted Armour does not sell, trade, or rent your personal data to third parties. We share data only in the following limited circumstances:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Recipient</th>
+            <th>Reason</th>
+            <th>Safeguards</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Infrastructure providers</td>
+            <td>Cloud hosting and storage operations</td>
+            <td>DPA agreements, encrypted-at-rest data only</td>
+          </tr>
+          <tr>
+            <td>Payment processors</td>
+            <td>Billing and subscription management</td>
+            <td>PCI-DSS Level 1 certified partners</td>
+          </tr>
+          <tr>
+            <td>Security vendors</td>
+            <td>Threat detection and DDoS protection</td>
+            <td>Minimal metadata only, strict DPA</td>
+          </tr>
+          <tr>
+            <td>Legal authorities</td>
+            <td>Valid legal orders (warrants, court orders)</td>
+            <td>We notify users where legally permitted and challenge overbroad requests</td>
+          </tr>
+          <tr>
+            <td>Your organization's admins</td>
+            <td>Workspace administration and compliance</td>
+            <td>Controlled by your organization's own policies</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warn-box">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p>In the event of a merger, acquisition, or sale of assets, user data may be transferred. We will provide notice before such a transfer takes place and ensure the acquiring entity maintains equivalent privacy protections.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 05 -->
+    <div class="policy-section" id="s5">
+      <div class="section-anchor">
+        <span class="section-num">05</span>
+        <h2>Data Storage &amp; Security</h2>
+      </div>
+      <p>All data processed by Encrypted Armour is stored in SOC 2 Type II certified data centers with physical and logical access controls. We implement layered security measures throughout our infrastructure:</p>
+      <ul class="commit-list">
+        <li>All data is encrypted at rest using AES-256 and in transit using TLS 1.3 or higher.</li>
+        <li>Access to production systems is restricted to authorized personnel via hardware security keys and privileged access management (PAM) systems.</li>
+        <li>We conduct regular third-party penetration tests and vulnerability assessments.</li>
+        <li>Automated anomaly detection monitors for unauthorized access attempts 24/7.</li>
+        <li>Full audit logs are maintained for all administrative actions with immutable, tamper-proof storage.</li>
+        <li>Our infrastructure undergoes continuous compliance monitoring against CIS benchmarks.</li>
+      </ul>
+      <p>In the event of a data breach affecting your personal information, we will notify affected users and relevant supervisory authorities within 72 hours of discovery, as required by GDPR and applicable regulations.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 06 -->
+    <div class="policy-section" id="s6">
+      <div class="section-anchor">
+        <span class="section-num">06</span>
+        <h2>Encryption Architecture</h2>
+      </div>
+      <p>Encrypted Armour is built on a <strong>zero-knowledge encryption model</strong>. This section provides technical transparency about how your data is protected:</p>
+      <div class="highlight-box">
+        <p><strong style="color:var(--cyan)">Zero-knowledge guarantee:</strong> All workspace content — messages, files, conference calls, task data — is encrypted on your device before being transmitted to our servers. Encryption keys are derived from your credentials and never leave your device in plaintext form. This means <strong style="color:var(--white)">Encrypted Armour employees cannot access the content of your workspace, under any circumstances.</strong></p>
+      </div>
+      <ul class="commit-list">
+        <li><strong style="color:var(--white)">End-to-end encryption (E2EE):</strong> Applied to all messages, file transfers, and conference calls using the Signal Protocol and AES-256-GCM.</li>
+        <li><strong style="color:var(--white)">Ephemeral session keys:</strong> Conference calls use unique per-session keys that are discarded after the call ends — no recordings are retained on our servers unless explicitly enabled by your admin.</li>
+        <li><strong style="color:var(--white)">Forward secrecy:</strong> Compromise of long-term keys does not compromise past session keys, ensuring historical communications remain protected.</li>
+        <li><strong style="color:var(--white)">Key management:</strong> Organization administrators control key rotation policies and can revoke access for departing employees without requiring re-encryption of all data.</li>
+        <li><strong style="color:var(--white)">Zero Trust enforcement:</strong> Every API request is authenticated and authorized independently — no implicit trust is granted based on network location.</li>
+      </ul>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 07 -->
+    <div class="policy-section" id="s7">
+      <div class="section-anchor">
+        <span class="section-num">07</span>
+        <h2>Your Rights</h2>
+      </div>
+      <p>Depending on your jurisdiction, you have specific rights over your personal data. We honor these rights for all users globally, regardless of whether local law strictly requires it:</p>
+      <div class="rights-grid">
+        <div class="right-card">
+          <div class="right-icon blue"><i class="fa-solid fa-eye"></i></div>
+          <div>
+            <h4>Right to Access</h4>
+            <p>Request a copy of all personal data we hold about you in a portable, machine-readable format.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon cyan"><i class="fa-solid fa-pen"></i></div>
+          <div>
+            <h4>Right to Rectification</h4>
+            <p>Request correction of inaccurate or incomplete personal information associated with your account.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon violet"><i class="fa-solid fa-trash"></i></div>
+          <div>
+            <h4>Right to Erasure</h4>
+            <p>Request deletion of your personal data ("right to be forgotten") subject to legal retention obligations.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon blue"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <h4>Right to Object</h4>
+            <p>Object to specific processing activities, including any analytics or profiling operations.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon cyan"><i class="fa-solid fa-pause"></i></div>
+          <div>
+            <h4>Right to Restriction</h4>
+            <p>Request that we restrict processing of your data while a dispute or review is in progress.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon violet"><i class="fa-solid fa-file-export"></i></div>
+          <div>
+            <h4>Right to Portability</h4>
+            <p>Receive your data in a structured, interoperable format to transfer to another service provider.</p>
+          </div>
+        </div>
+      </div>
+      <p>To exercise any of these rights, contact our Data Protection Officer at <strong style="color:var(--white)">privacy@encryptedarmour.io</strong>. We will respond within 30 days. You also have the right to lodge a complaint with your local data protection authority.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 08 -->
+    <div class="policy-section" id="s8">
+      <div class="section-anchor">
+        <span class="section-num">08</span>
+        <h2>Cookies &amp; Tracking</h2>
+      </div>
+      <p>We use a minimal set of cookies to operate the Services securely and effectively. We do not use cookies for advertising or cross-site tracking.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Cookie Type</th>
+            <th>Purpose</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Strictly Necessary</td>
+            <td>Session management, authentication tokens, CSRF protection</td>
+            <td>Session / 24 hours</td>
+          </tr>
+          <tr>
+            <td>Security</td>
+            <td>Fraud detection, bot prevention, Zero Trust verification signals</td>
+            <td>Up to 30 days</td>
+          </tr>
+          <tr>
+            <td>Preferences</td>
+            <td>UI settings, theme, language, notification preferences</td>
+            <td>Up to 1 year</td>
+          </tr>
+          <tr>
+            <td>Analytics (optional)</td>
+            <td>Aggregated, anonymized product usage — no personal identifiers</td>
+            <td>Up to 90 days</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>You can manage cookie preferences through your browser settings or via the cookie preference center within the platform. Disabling strictly necessary cookies will impair platform functionality. We do not use third-party advertising cookies or tracking pixels under any circumstances.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 09 -->
+    <div class="policy-section" id="s9">
+      <div class="section-anchor">
+        <span class="section-num">09</span>
+        <h2>Data Retention</h2>
+      </div>
+      <p>We retain personal data only for as long as necessary to provide the Services and meet legal obligations. Our retention schedule is as follows:</p>
+      <ul class="commit-list">
+        <li><strong style="color:var(--white)">Account data:</strong> Retained for the duration of your subscription and deleted within 30 days of account termination upon written request.</li>
+        <li><strong style="color:var(--white)">Workspace content (encrypted):</strong> Controlled entirely by your organization. Admins may delete content at any time. Upon account termination, all encrypted blobs are deleted within 30 days.</li>
+        <li><strong style="color:var(--white)">Security logs:</strong> Retained for 12 months for incident investigation purposes, then purged.</li>
+        <li><strong style="color:var(--white)">Billing records:</strong> Retained for 7 years as required by financial regulations.</li>
+        <li><strong style="color:var(--white)">Support records:</strong> Retained for 2 years from ticket closure to facilitate follow-up issues.</li>
+        <li><strong style="color:var(--white)">Conference recordings (if enabled by admin):</strong> Retained per your organization's configured policy, defaulting to 90 days.</li>
+      </ul>
+      <div class="info-box">
+        <i class="fa-solid fa-circle-info"></i>
+        <p>After deletion, data is overwritten using DoD 5220.22-M compliant multi-pass erasure on physical storage. Cloud storage volumes are cryptographically erased prior to decommissioning.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 10 -->
+    <div class="policy-section" id="s10">
+      <div class="section-anchor">
+        <span class="section-num">10</span>
+        <h2>Children's Privacy</h2>
+      </div>
+      <p>Encrypted Armour is an enterprise platform intended exclusively for use by adults in a professional context. We do not knowingly collect personal data from individuals under the age of 16.</p>
+      <p>If you believe a minor has accessed the platform without authorization, please contact us immediately at <strong style="color:var(--white)">privacy@encryptedarmour.io</strong> and we will investigate and take appropriate action, including deletion of any data associated with that account.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 11 -->
+    <div class="policy-section" id="s11">
+      <div class="section-anchor">
+        <span class="section-num">11</span>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our Services, legal requirements, or data practices. When we make material changes, we will:</p>
+      <ul class="commit-list">
+        <li>Post the updated policy on this page with a revised "Last Updated" date.</li>
+        <li>Notify all active account holders via email at least 14 days before the changes take effect.</li>
+        <li>Display an in-platform banner for 30 days following significant changes.</li>
+        <li>Maintain a public changelog of all revisions to this policy for transparency.</li>
+      </ul>
+      <p>Continued use of the Services after the effective date of an updated policy constitutes acceptance of the changes. If you do not agree with the updated policy, you may terminate your account before the effective date.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 12 -->
+    <div class="policy-section" id="s12">
+      <div class="section-anchor">
+        <span class="section-num">12</span>
+        <h2>Contact Us</h2>
+      </div>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or the handling of your personal data, please reach out through any of the following channels:</p>
+      <div class="contact-card">
+        <div>
+          <h3>Data Protection Officer</h3>
+          <p>privacy@encryptedarmour.io &nbsp;·&nbsp; Response within 2 business days</p>
+        </div>
+        <a href="mailto:privacy@encryptedarmour.io">
+          <i class="fa-solid fa-envelope"></i> Contact DPO
+        </a>
+      </div>
+      <p style="margin-top:24px;">For legal notices and formal requests, you may also write to us at:</p>
+      <div class="info-box" style="margin-top:12px">
+        <i class="fa-solid fa-building"></i>
+        <div>
+          <p style="margin-bottom:4px"><strong style="color:var(--white)">Encrypted Armour Ltd.</strong></p>
+          <p style="margin:0">Legal & Privacy Team<br>privacy@encryptedarmour.io</p>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+          <i class="fa-solid fa-arrow-up"></i> Back to top
+        </button>
+        <span style="font-size:0.78rem;color:var(--gray-dim)">Encrypted Armour Privacy Policy · v2.1 · May 2025</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Encrypted Armour</div>
+    <div class="footer-links">
+      <a href="encrypted-armour.html">Home</a>
+      <a href="#" class="current">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+    </div>
+    <div class="footer-copy">© 2025 Encrypted Armour. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL SPY FOR TOC ── */
+const sections = document.querySelectorAll('.policy-section');
+const tocLinks = document.querySelectorAll('#tocList a');
+
+function updateToc(){
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top <= 160) current = sec.id;
+  });
+  tocLinks.forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}
+window.addEventListener('scroll', updateToc, { passive:true });
+
+/* ── SCROLL REVEAL ── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+sections.forEach((s,i) => {
+  s.style.transitionDelay = '0s';
+  revealObs.observe(s);
+});
+
+/* ── SMOOTH ANCHOR SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  });
+});
+
+/* ── NAVBAR SCROLL STATE ── */
+const navbar = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 40){
+    navbar.style.background = 'rgba(5,7,13,0.92)';
+    navbar.style.boxShadow = '0 4px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(59,130,246,0.12)';
+  } else {
+    navbar.style.background = 'rgba(7,17,31,0.75)';
+    navbar.style.boxShadow = '0 4px 40px rgba(0,0,0,0.4),0 0 0 1px rgba(59,130,246,0.08)';
+  }
+}, { passive:true });
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — Encrypted Armour</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{
+  --navy:#07111F;
+  --black:#05070D;
+  --blue:#3B82F6;
+  --cyan:#22D3EE;
+  --violet:#8B5CF6;
+  --white:#FFFFFF;
+  --gray:#94A3B8;
+  --gray-dim:#475569;
+  --border:rgba(255,255,255,0.07);
+  --border-light:rgba(255,255,255,0.05);
+  --glass:rgba(255,255,255,0.04);
+  --glass-hover:rgba(255,255,255,0.07);
+  --font-head:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+::selection{background:var(--blue);color:#fff;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--blue),var(--violet));border-radius:2px;}
+
+/* ── BACKGROUND ── */
+.bg-grid{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background-image:
+    linear-gradient(rgba(59,130,246,0.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,130,246,0.035) 1px,transparent 1px);
+  background-size:60px 60px;
+  z-index:0;pointer-events:none;
+}
+.bg-glow{
+  position:fixed;pointer-events:none;z-index:0;
+  border-radius:50%;filter:blur(120px);
+}
+.bg-glow-1{
+  width:600px;height:600px;
+  background:rgba(59,130,246,0.06);
+  top:-200px;right:-100px;
+  animation:glowDrift 12s ease-in-out infinite;
+}
+.bg-glow-2{
+  width:400px;height:400px;
+  background:rgba(139,92,246,0.05);
+  bottom:20%;left:-100px;
+  animation:glowDrift 15s ease-in-out infinite reverse;
+}
+@keyframes glowDrift{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(40px,-40px);}
+}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:0.022;z-index:0;pointer-events:none;
+}
+
+/* ── NAVBAR ── */
+nav{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  width:calc(100% - 40px);max-width:1100px;
+  background:rgba(7,17,31,0.75);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border:1px solid var(--border);
+  border-radius:100px;
+  padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:1000;
+  box-shadow:0 4px 40px rgba(0,0,0,0.4),0 0 0 1px rgba(59,130,246,0.08);
+  transition:all 0.3s ease;
+}
+.nav-logo{
+  font-family:var(--font-head);font-size:1.1rem;font-weight:800;
+  background:linear-gradient(135deg,var(--white),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;letter-spacing:-0.02em;
+  text-decoration:none;
+}
+.nav-back{
+  display:flex;align-items:center;gap:8px;
+  color:var(--gray);font-size:0.85rem;font-weight:500;
+  text-decoration:none;padding:8px 16px;border-radius:100px;
+  border:1px solid var(--border);background:var(--glass);
+  transition:all 0.2s ease;
+}
+.nav-back:hover{color:var(--white);background:var(--glass-hover);border-color:rgba(59,130,246,0.25);}
+.nav-back i{font-size:0.75rem;transition:transform 0.2s ease;}
+.nav-back:hover i{transform:translateX(-3px);}
+
+/* ── LAYOUT ── */
+.page-wrap{
+  position:relative;z-index:2;
+  max-width:1100px;margin:0 auto;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:48px;
+  padding-top:120px;
+  padding-bottom:100px;
+}
+
+/* ── SIDEBAR TOC ── */
+.toc-sidebar{
+  position:sticky;top:100px;
+  height:fit-content;
+  align-self:start;
+}
+.toc-card{
+  background:rgba(7,17,31,0.7);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px 20px;
+  backdrop-filter:blur(20px);
+}
+.toc-label{
+  font-size:0.68rem;font-weight:700;
+  color:var(--gray-dim);letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:16px;
+  padding-bottom:12px;border-bottom:1px solid var(--border);
+}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:2px;}
+.toc-list a{
+  display:flex;align-items:center;gap:10px;
+  color:var(--gray);font-size:0.8rem;font-weight:500;
+  text-decoration:none;padding:8px 10px;border-radius:10px;
+  transition:all 0.2s ease;line-height:1.3;
+}
+.toc-list a:hover,
+.toc-list a.active{
+  color:var(--white);background:var(--glass-hover);
+}
+.toc-list a.active{
+  color:var(--cyan);
+  border-left:2px solid var(--cyan);
+  padding-left:12px;
+}
+.toc-list .toc-num{
+  font-size:0.65rem;font-weight:700;color:var(--gray-dim);
+  min-width:18px;font-family:var(--font-head);
+}
+.toc-list a.active .toc-num{color:var(--cyan);}
+
+.toc-meta{
+  margin-top:20px;padding-top:16px;border-top:1px solid var(--border);
+}
+.toc-meta p{font-size:0.73rem;color:var(--gray-dim);line-height:1.5;}
+.toc-meta strong{color:var(--gray);}
+
+/* ── MAIN CONTENT ── */
+.policy-content{}
+
+/* Hero header */
+.policy-hero{
+  margin-bottom:56px;
+  padding-bottom:40px;
+  border-bottom:1px solid var(--border);
+}
+.policy-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2);
+  border-radius:100px;padding:7px 16px;margin-bottom:24px;
+  font-size:0.72rem;font-weight:700;color:var(--blue);
+  letter-spacing:0.08em;text-transform:uppercase;
+}
+.policy-hero h1{
+  font-family:var(--font-head);
+  font-size:clamp(2.2rem,4vw,3.2rem);
+  font-weight:800;letter-spacing:-0.04em;line-height:1.05;
+  margin-bottom:16px;
+}
+.policy-hero h1 span{
+  background:linear-gradient(135deg,var(--blue),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.policy-hero .lead{
+  color:var(--gray);font-size:1rem;line-height:1.7;
+  font-weight:300;max-width:600px;margin-bottom:28px;
+}
+.policy-meta-row{
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+}
+.meta-chip{
+  display:flex;align-items:center;gap:7px;
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:100px;padding:7px 14px;
+  font-size:0.75rem;color:var(--gray);font-weight:500;
+}
+.meta-chip i{color:var(--cyan);font-size:0.7rem;}
+
+/* Sections */
+.policy-section{
+  margin-bottom:56px;
+  opacity:0;transform:translateY(20px);
+  transition:all 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.policy-section.visible{opacity:1;transform:translateY(0);}
+
+.section-anchor{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:20px;
+}
+.section-num{
+  font-family:var(--font-head);font-size:0.72rem;font-weight:800;
+  color:var(--cyan);letter-spacing:0.08em;
+  background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.2);
+  padding:4px 10px;border-radius:6px;flex-shrink:0;
+}
+.policy-section h2{
+  font-family:var(--font-head);
+  font-size:1.35rem;font-weight:700;
+  letter-spacing:-0.02em;line-height:1.2;
+}
+.policy-section p{
+  color:var(--gray);font-size:0.92rem;line-height:1.8;
+  font-weight:300;margin-bottom:16px;
+}
+.policy-section p:last-child{margin-bottom:0;}
+.policy-section p strong{color:var(--white);font-weight:600;}
+
+/* Info box */
+.info-box{
+  background:rgba(59,130,246,0.06);
+  border:1px solid rgba(59,130,246,0.18);
+  border-left:3px solid var(--blue);
+  border-radius:12px;padding:18px 20px;
+  margin:20px 0;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.info-box i{color:var(--blue);font-size:0.9rem;margin-top:2px;flex-shrink:0;}
+.info-box p{margin:0;font-size:0.875rem;}
+
+.highlight-box{
+  background:rgba(34,211,238,0.05);
+  border:1px solid rgba(34,211,238,0.15);
+  border-left:3px solid var(--cyan);
+  border-radius:12px;padding:18px 20px;
+  margin:20px 0;
+}
+.highlight-box p{margin:0;font-size:0.875rem;}
+
+.warn-box{
+  background:rgba(251,191,36,0.05);
+  border:1px solid rgba(251,191,36,0.15);
+  border-left:3px solid #fbbf24;
+  border-radius:12px;padding:18px 20px;
+  margin:20px 0;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.warn-box i{color:#fbbf24;font-size:0.9rem;margin-top:2px;flex-shrink:0;}
+.warn-box p{margin:0;font-size:0.875rem;}
+
+/* Data table */
+.data-table{
+  width:100%;border-collapse:collapse;
+  margin:20px 0;font-size:0.85rem;
+  border-radius:12px;overflow:hidden;
+  border:1px solid var(--border);
+}
+.data-table th{
+  background:rgba(255,255,255,0.05);
+  color:var(--gray);font-size:0.72rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:12px 16px;text-align:left;
+  border-bottom:1px solid var(--border);
+}
+.data-table td{
+  padding:12px 16px;color:var(--gray);
+  border-bottom:1px solid var(--border-light);
+  vertical-align:top;line-height:1.5;
+}
+.data-table td:first-child{color:var(--white);font-weight:500;}
+.data-table tr:last-child td{border-bottom:none;}
+.data-table tr:hover td{background:rgba(255,255,255,0.02);}
+
+/* Rights grid */
+.rights-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;margin:20px 0;
+}
+.right-card{
+  background:var(--glass);border:1px solid var(--border);
+  border-radius:14px;padding:18px 16px;
+  display:flex;gap:12px;align-items:flex-start;
+  transition:all 0.25s ease;
+}
+.right-card:hover{background:var(--glass-hover);border-color:rgba(59,130,246,0.2);transform:translateY(-2px);}
+.right-icon{
+  width:34px;height:34px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.8rem;flex-shrink:0;
+}
+.right-icon.blue{background:rgba(59,130,246,0.15);color:var(--blue);}
+.right-icon.cyan{background:rgba(34,211,238,0.15);color:var(--cyan);}
+.right-icon.violet{background:rgba(139,92,246,0.15);color:var(--violet);}
+.right-card h4{font-size:0.85rem;font-weight:700;margin-bottom:4px;}
+.right-card p{font-size:0.78rem;color:var(--gray);line-height:1.5;margin:0;}
+
+/* Commitment list */
+.commit-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin:16px 0;}
+.commit-list li{
+  display:flex;align-items:flex-start;gap:12px;
+  color:var(--gray);font-size:0.9rem;line-height:1.6;font-weight:300;
+}
+.commit-list li::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--cyan);flex-shrink:0;margin-top:7px;
+}
+
+/* Contact card */
+.contact-card{
+  background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.06));
+  border:1px solid rgba(59,130,246,0.2);
+  border-radius:18px;padding:28px;margin-top:20px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.contact-card h3{
+  font-family:var(--font-head);font-size:1.1rem;font-weight:700;
+  margin-bottom:6px;
+}
+.contact-card p{font-size:0.875rem;color:var(--gray);margin:0;}
+.contact-card a{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--blue),var(--violet));
+  color:#fff;text-decoration:none;
+  padding:11px 22px;border-radius:100px;
+  font-size:0.85rem;font-weight:600;
+  transition:all 0.3s ease;
+  box-shadow:0 0 20px rgba(59,130,246,0.25);white-space:nowrap;
+}
+.contact-card a:hover{transform:translateY(-2px);box-shadow:0 0 35px rgba(59,130,246,0.45);}
+
+/* Divider between sections */
+.section-divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin-bottom:56px;
+}
+
+/* Back to top */
+.back-top{
+  display:inline-flex;align-items:center;gap:8px;
+  color:var(--gray-dim);font-size:0.8rem;font-weight:500;
+  text-decoration:none;cursor:pointer;background:none;border:none;
+  transition:color 0.2s ease;
+}
+.back-top:hover{color:var(--cyan);}
+
+/* ── FOOTER ── */
+footer{
+  position:relative;z-index:2;
+  border-top:1px solid var(--border);
+  padding:40px 24px;margin-top:0;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-logo{
+  font-family:var(--font-head);font-size:1rem;font-weight:800;
+  background:linear-gradient(135deg,var(--white),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.footer-copy{color:var(--gray-dim);font-size:0.78rem;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{
+  color:var(--gray-dim);font-size:0.78rem;text-decoration:none;
+  transition:color 0.2s ease;
+}
+.footer-links a:hover{color:var(--white);}
+.footer-links a.current{color:var(--cyan);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .page-wrap{grid-template-columns:1fr;padding-top:100px;}
+  .toc-sidebar{position:static;height:auto;}
+  .toc-card{display:none;}
+  .rights-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  nav{width:calc(100% - 24px);top:12px;padding:12px 18px;}
+  .page-wrap{padding:90px 16px 80px;}
+  .policy-hero h1{font-size:1.9rem;}
+  .contact-card{flex-direction:column;}
+  .policy-meta-row{gap:10px;}
+  .footer-inner{flex-direction:column;text-align:center;}
+  .footer-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Encrypted Armour</a>
+  <a href="index.html" class="nav-back">
+    <i class="fa-solid fa-arrow-left"></i> Back to Home
+  </a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <div class="toc-label">On this page</div>
+      <ul class="toc-list" id="tocList">
+        <li><a href="#s1" class="active"><span class="toc-num">01</span>Overview</a></li>
+        <li><a href="#s2"><span class="toc-num">02</span>Information We Collect</a></li>
+        <li><a href="#s3"><span class="toc-num">03</span>How We Use Information</a></li>
+        <li><a href="#s4"><span class="toc-num">04</span>Data Sharing</a></li>
+        <li><a href="#s5"><span class="toc-num">05</span>Data Storage &amp; Security</a></li>
+        <li><a href="#s6"><span class="toc-num">06</span>Encryption Architecture</a></li>
+        <li><a href="#s7"><span class="toc-num">07</span>Your Rights</a></li>
+        <li><a href="#s8"><span class="toc-num">08</span>Cookies &amp; Tracking</a></li>
+        <li><a href="#s9"><span class="toc-num">09</span>Data Retention</a></li>
+        <li><a href="#s10"><span class="toc-num">10</span>Children's Privacy</a></li>
+        <li><a href="#s11"><span class="toc-num">11</span>Policy Changes</a></li>
+        <li><a href="#s12"><span class="toc-num">12</span>Contact Us</a></li>
+      </ul>
+      <div class="toc-meta">
+        <p><strong>Effective:</strong> January 1, 2025</p>
+        <p style="margin-top:6px"><strong>Last updated:</strong> May 10, 2025</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="policy-content">
+
+    <!-- Hero -->
+    <div class="policy-hero">
+      <div class="policy-badge"><i class="fa-solid fa-shield-halved"></i> Legal & Privacy</div>
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="lead">At Encrypted Armour, privacy is not a feature — it is the foundation. This policy explains exactly what data we collect, how we use it, and the architectural guarantees that protect your organization's information.</p>
+      <div class="policy-meta-row">
+        <div class="meta-chip"><i class="fa-solid fa-calendar"></i> Effective: January 1, 2025</div>
+        <div class="meta-chip"><i class="fa-solid fa-pen-to-square"></i> Updated: May 10, 2025</div>
+        <div class="meta-chip"><i class="fa-solid fa-globe"></i> Applies globally</div>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="policy-section" id="s1">
+      <div class="section-anchor">
+        <span class="section-num">01</span>
+        <h2>Overview</h2>
+      </div>
+      <p>Encrypted Armour ("we," "our," or "us") operates a highly secure enterprise workspace platform designed for organizations that require confidential internal collaboration. This Privacy Policy governs the collection, use, processing, and protection of personal data when you access or use our platform, website, APIs, and associated services (collectively, the "Services").</p>
+      <p>This policy applies to all users of the Encrypted Armour platform including administrators, employees of client organizations, and visitors to our website. By using the Services, you acknowledge that you have read and understood this policy.</p>
+      <div class="highlight-box">
+        <p><strong style="color:var(--cyan)">Our core commitment:</strong> Encrypted Armour operates on a zero-knowledge architecture. We cannot read the content of your encrypted messages, files, or communications. Your organization controls the encryption keys, not us.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 02 -->
+    <div class="policy-section" id="s2">
+      <div class="section-anchor">
+        <span class="section-num">02</span>
+        <h2>Information We Collect</h2>
+      </div>
+      <p>We collect the minimum information necessary to provide, maintain, and improve the Services. We categorize this data as follows:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Examples</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account Information</td>
+            <td>Name, work email, organization name, role</td>
+            <td>Authentication and account management</td>
+          </tr>
+          <tr>
+            <td>Usage Metadata</td>
+            <td>Login timestamps, session duration, feature interactions</td>
+            <td>Security monitoring and product improvement</td>
+          </tr>
+          <tr>
+            <td>Device & Technical Data</td>
+            <td>IP address, browser type, OS version, device identifiers</td>
+            <td>Fraud prevention and security enforcement</td>
+          </tr>
+          <tr>
+            <td>Billing Information</td>
+            <td>Payment method type, billing address, invoice history</td>
+            <td>Processing subscriptions (via PCI-DSS compliant processors)</td>
+          </tr>
+          <tr>
+            <td>Support Communications</td>
+            <td>Support tickets, chat logs with our team</td>
+            <td>Customer support and issue resolution</td>
+          </tr>
+          <tr>
+            <td>Workspace Content</td>
+            <td>Messages, files, tasks (encrypted, inaccessible to us)</td>
+            <td>Delivered to users — we cannot access the plaintext</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <i class="fa-solid fa-circle-info"></i>
+        <p><strong style="color:var(--white)">What we do NOT collect:</strong> We do not collect the content of end-to-end encrypted messages, file contents, conference call audio/video, or any workspace data in plaintext form. This content is encrypted client-side before transmission.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 03 -->
+    <div class="policy-section" id="s3">
+      <div class="section-anchor">
+        <span class="section-num">03</span>
+        <h2>How We Use Information</h2>
+      </div>
+      <p>We use the information we collect strictly for the following purposes:</p>
+      <ul class="commit-list">
+        <li><strong style="color:var(--white)">Service delivery:</strong> Providing, operating, and maintaining the Encrypted Armour platform and all associated features.</li>
+        <li><strong style="color:var(--white)">Security and fraud prevention:</strong> Detecting unauthorized access, monitoring for anomalous behavior, and enforcing Zero Trust policies across sessions.</li>
+        <li><strong style="color:var(--white)">Authentication:</strong> Verifying user identity through multi-factor authentication, SSO integrations, and session management.</li>
+        <li><strong style="color:var(--white)">Billing and account management:</strong> Processing payments, managing subscriptions, and issuing invoices to enterprise clients.</li>
+        <li><strong style="color:var(--white)">Product improvement:</strong> Analyzing aggregated, anonymized usage patterns to improve performance, reliability, and the user experience.</li>
+        <li><strong style="color:var(--white)">Legal compliance:</strong> Meeting obligations under applicable data protection laws including GDPR, CCPA, and regional equivalents.</li>
+        <li><strong style="color:var(--white)">Customer support:</strong> Responding to support requests, resolving technical issues, and communicating service updates.</li>
+      </ul>
+      <p>We do not use your data for advertising, do not sell it to third parties, and do not use it to train AI or machine learning models without explicit consent.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 04 -->
+    <div class="policy-section" id="s4">
+      <div class="section-anchor">
+        <span class="section-num">04</span>
+        <h2>Data Sharing</h2>
+      </div>
+      <p>Encrypted Armour does not sell, trade, or rent your personal data to third parties. We share data only in the following limited circumstances:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Recipient</th>
+            <th>Reason</th>
+            <th>Safeguards</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Infrastructure providers</td>
+            <td>Cloud hosting and storage operations</td>
+            <td>DPA agreements, encrypted-at-rest data only</td>
+          </tr>
+          <tr>
+            <td>Payment processors</td>
+            <td>Billing and subscription management</td>
+            <td>PCI-DSS Level 1 certified partners</td>
+          </tr>
+          <tr>
+            <td>Security vendors</td>
+            <td>Threat detection and DDoS protection</td>
+            <td>Minimal metadata only, strict DPA</td>
+          </tr>
+          <tr>
+            <td>Legal authorities</td>
+            <td>Valid legal orders (warrants, court orders)</td>
+            <td>We notify users where legally permitted and challenge overbroad requests</td>
+          </tr>
+          <tr>
+            <td>Your organization's admins</td>
+            <td>Workspace administration and compliance</td>
+            <td>Controlled by your organization's own policies</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="warn-box">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <p>In the event of a merger, acquisition, or sale of assets, user data may be transferred. We will provide notice before such a transfer takes place and ensure the acquiring entity maintains equivalent privacy protections.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 05 -->
+    <div class="policy-section" id="s5">
+      <div class="section-anchor">
+        <span class="section-num">05</span>
+        <h2>Data Storage &amp; Security</h2>
+      </div>
+      <p>All data processed by Encrypted Armour is stored in SOC 2 Type II certified data centers with physical and logical access controls. We implement layered security measures throughout our infrastructure:</p>
+      <ul class="commit-list">
+        <li>All data is encrypted at rest using AES-256 and in transit using TLS 1.3 or higher.</li>
+        <li>Access to production systems is restricted to authorized personnel via hardware security keys and privileged access management (PAM) systems.</li>
+        <li>We conduct regular third-party penetration tests and vulnerability assessments.</li>
+        <li>Automated anomaly detection monitors for unauthorized access attempts 24/7.</li>
+        <li>Full audit logs are maintained for all administrative actions with immutable, tamper-proof storage.</li>
+        <li>Our infrastructure undergoes continuous compliance monitoring against CIS benchmarks.</li>
+      </ul>
+      <p>In the event of a data breach affecting your personal information, we will notify affected users and relevant supervisory authorities within 72 hours of discovery, as required by GDPR and applicable regulations.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 06 -->
+    <div class="policy-section" id="s6">
+      <div class="section-anchor">
+        <span class="section-num">06</span>
+        <h2>Encryption Architecture</h2>
+      </div>
+      <p>Encrypted Armour is built on a <strong>zero-knowledge encryption model</strong>. This section provides technical transparency about how your data is protected:</p>
+      <div class="highlight-box">
+        <p><strong style="color:var(--cyan)">Zero-knowledge guarantee:</strong> All workspace content — messages, files, conference calls, task data — is encrypted on your device before being transmitted to our servers. Encryption keys are derived from your credentials and never leave your device in plaintext form. This means <strong style="color:var(--white)">Encrypted Armour employees cannot access the content of your workspace, under any circumstances.</strong></p>
+      </div>
+      <ul class="commit-list">
+        <li><strong style="color:var(--white)">End-to-end encryption (E2EE):</strong> Applied to all messages, file transfers, and conference calls using the Signal Protocol and AES-256-GCM.</li>
+        <li><strong style="color:var(--white)">Ephemeral session keys:</strong> Conference calls use unique per-session keys that are discarded after the call ends — no recordings are retained on our servers unless explicitly enabled by your admin.</li>
+        <li><strong style="color:var(--white)">Forward secrecy:</strong> Compromise of long-term keys does not compromise past session keys, ensuring historical communications remain protected.</li>
+        <li><strong style="color:var(--white)">Key management:</strong> Organization administrators control key rotation policies and can revoke access for departing employees without requiring re-encryption of all data.</li>
+        <li><strong style="color:var(--white)">Zero Trust enforcement:</strong> Every API request is authenticated and authorized independently — no implicit trust is granted based on network location.</li>
+      </ul>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 07 -->
+    <div class="policy-section" id="s7">
+      <div class="section-anchor">
+        <span class="section-num">07</span>
+        <h2>Your Rights</h2>
+      </div>
+      <p>Depending on your jurisdiction, you have specific rights over your personal data. We honor these rights for all users globally, regardless of whether local law strictly requires it:</p>
+      <div class="rights-grid">
+        <div class="right-card">
+          <div class="right-icon blue"><i class="fa-solid fa-eye"></i></div>
+          <div>
+            <h4>Right to Access</h4>
+            <p>Request a copy of all personal data we hold about you in a portable, machine-readable format.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon cyan"><i class="fa-solid fa-pen"></i></div>
+          <div>
+            <h4>Right to Rectification</h4>
+            <p>Request correction of inaccurate or incomplete personal information associated with your account.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon violet"><i class="fa-solid fa-trash"></i></div>
+          <div>
+            <h4>Right to Erasure</h4>
+            <p>Request deletion of your personal data ("right to be forgotten") subject to legal retention obligations.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon blue"><i class="fa-solid fa-ban"></i></div>
+          <div>
+            <h4>Right to Object</h4>
+            <p>Object to specific processing activities, including any analytics or profiling operations.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon cyan"><i class="fa-solid fa-pause"></i></div>
+          <div>
+            <h4>Right to Restriction</h4>
+            <p>Request that we restrict processing of your data while a dispute or review is in progress.</p>
+          </div>
+        </div>
+        <div class="right-card">
+          <div class="right-icon violet"><i class="fa-solid fa-file-export"></i></div>
+          <div>
+            <h4>Right to Portability</h4>
+            <p>Receive your data in a structured, interoperable format to transfer to another service provider.</p>
+          </div>
+        </div>
+      </div>
+      <p>To exercise any of these rights, contact our Data Protection Officer at <strong style="color:var(--white)">privacy@encryptedarmour.io</strong>. We will respond within 30 days. You also have the right to lodge a complaint with your local data protection authority.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 08 -->
+    <div class="policy-section" id="s8">
+      <div class="section-anchor">
+        <span class="section-num">08</span>
+        <h2>Cookies &amp; Tracking</h2>
+      </div>
+      <p>We use a minimal set of cookies to operate the Services securely and effectively. We do not use cookies for advertising or cross-site tracking.</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Cookie Type</th>
+            <th>Purpose</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Strictly Necessary</td>
+            <td>Session management, authentication tokens, CSRF protection</td>
+            <td>Session / 24 hours</td>
+          </tr>
+          <tr>
+            <td>Security</td>
+            <td>Fraud detection, bot prevention, Zero Trust verification signals</td>
+            <td>Up to 30 days</td>
+          </tr>
+          <tr>
+            <td>Preferences</td>
+            <td>UI settings, theme, language, notification preferences</td>
+            <td>Up to 1 year</td>
+          </tr>
+          <tr>
+            <td>Analytics (optional)</td>
+            <td>Aggregated, anonymized product usage — no personal identifiers</td>
+            <td>Up to 90 days</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>You can manage cookie preferences through your browser settings or via the cookie preference center within the platform. Disabling strictly necessary cookies will impair platform functionality. We do not use third-party advertising cookies or tracking pixels under any circumstances.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 09 -->
+    <div class="policy-section" id="s9">
+      <div class="section-anchor">
+        <span class="section-num">09</span>
+        <h2>Data Retention</h2>
+      </div>
+      <p>We retain personal data only for as long as necessary to provide the Services and meet legal obligations. Our retention schedule is as follows:</p>
+      <ul class="commit-list">
+        <li><strong style="color:var(--white)">Account data:</strong> Retained for the duration of your subscription and deleted within 30 days of account termination upon written request.</li>
+        <li><strong style="color:var(--white)">Workspace content (encrypted):</strong> Controlled entirely by your organization. Admins may delete content at any time. Upon account termination, all encrypted blobs are deleted within 30 days.</li>
+        <li><strong style="color:var(--white)">Security logs:</strong> Retained for 12 months for incident investigation purposes, then purged.</li>
+        <li><strong style="color:var(--white)">Billing records:</strong> Retained for 7 years as required by financial regulations.</li>
+        <li><strong style="color:var(--white)">Support records:</strong> Retained for 2 years from ticket closure to facilitate follow-up issues.</li>
+        <li><strong style="color:var(--white)">Conference recordings (if enabled by admin):</strong> Retained per your organization's configured policy, defaulting to 90 days.</li>
+      </ul>
+      <div class="info-box">
+        <i class="fa-solid fa-circle-info"></i>
+        <p>After deletion, data is overwritten using DoD 5220.22-M compliant multi-pass erasure on physical storage. Cloud storage volumes are cryptographically erased prior to decommissioning.</p>
+      </div>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 10 -->
+    <div class="policy-section" id="s10">
+      <div class="section-anchor">
+        <span class="section-num">10</span>
+        <h2>Children's Privacy</h2>
+      </div>
+      <p>Encrypted Armour is an enterprise platform intended exclusively for use by adults in a professional context. We do not knowingly collect personal data from individuals under the age of 16.</p>
+      <p>If you believe a minor has accessed the platform without authorization, please contact us immediately at <strong style="color:var(--white)">privacy@encryptedarmour.io</strong> and we will investigate and take appropriate action, including deletion of any data associated with that account.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 11 -->
+    <div class="policy-section" id="s11">
+      <div class="section-anchor">
+        <span class="section-num">11</span>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our Services, legal requirements, or data practices. When we make material changes, we will:</p>
+      <ul class="commit-list">
+        <li>Post the updated policy on this page with a revised "Last Updated" date.</li>
+        <li>Notify all active account holders via email at least 14 days before the changes take effect.</li>
+        <li>Display an in-platform banner for 30 days following significant changes.</li>
+        <li>Maintain a public changelog of all revisions to this policy for transparency.</li>
+      </ul>
+      <p>Continued use of the Services after the effective date of an updated policy constitutes acceptance of the changes. If you do not agree with the updated policy, you may terminate your account before the effective date.</p>
+    </div>
+    <div class="section-divider"></div>
+
+    <!-- 12 -->
+    <div class="policy-section" id="s12">
+      <div class="section-anchor">
+        <span class="section-num">12</span>
+        <h2>Contact Us</h2>
+      </div>
+      <p>If you have questions, concerns, or requests regarding this Privacy Policy or the handling of your personal data, please reach out through any of the following channels:</p>
+      <div class="contact-card">
+        <div>
+          <h3>Data Protection Officer</h3>
+          <p>privacy@encryptedarmour.io &nbsp;·&nbsp; Response within 2 business days</p>
+        </div>
+        <a href="mailto:privacy@encryptedarmour.io">
+          <i class="fa-solid fa-envelope"></i> Contact DPO
+        </a>
+      </div>
+      <p style="margin-top:24px;">For legal notices and formal requests, you may also write to us at:</p>
+      <div class="info-box" style="margin-top:12px">
+        <i class="fa-solid fa-building"></i>
+        <div>
+          <p style="margin-bottom:4px"><strong style="color:var(--white)">Encrypted Armour Ltd.</strong></p>
+          <p style="margin:0">Legal & Privacy Team<br>privacy@encryptedarmour.io</p>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <button class="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+          <i class="fa-solid fa-arrow-up"></i> Back to top
+        </button>
+        <span style="font-size:0.78rem;color:var(--gray-dim)">Encrypted Armour Privacy Policy · v2.1 · May 2025</span>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Encrypted Armour</div>
+    <div class="footer-links">
+      <a href="encrypted-armour.html">Home</a>
+      <a href="#" class="current">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Security</a>
+    </div>
+    <div class="footer-copy">© 2025 Encrypted Armour. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+/* ── SCROLL SPY FOR TOC ── */
+const sections = document.querySelectorAll('.policy-section');
+const tocLinks = document.querySelectorAll('#tocList a');
+
+function updateToc(){
+  let current = '';
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top <= 160) current = sec.id;
+  });
+  tocLinks.forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}
+window.addEventListener('scroll', updateToc, { passive:true });
+
+/* ── SCROLL REVEAL ── */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+sections.forEach((s,i) => {
+  s.style.transitionDelay = '0s';
+  revealObs.observe(s);
+});
+
+/* ── SMOOTH ANCHOR SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){
+      e.preventDefault();
+      target.scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+  });
+});
+
+/* ── NAVBAR SCROLL STATE ── */
+const navbar = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 40){
+    navbar.style.background = 'rgba(5,7,13,0.92)';
+    navbar.style.boxShadow = '0 4px 40px rgba(0,0,0,0.6),0 0 0 1px rgba(59,130,246,0.12)';
+  } else {
+    navbar.style.background = 'rgba(7,17,31,0.75)';
+    navbar.style.boxShadow = '0 4px 40px rgba(0,0,0,0.4),0 0 0 1px rgba(59,130,246,0.08)';
+  }
+}, { passive:true });
+</script>
+</body>
+</html>
